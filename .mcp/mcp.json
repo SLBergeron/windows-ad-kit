@@ -1,0 +1,43 @@
+{
+  "mcps": {
+    "context7": {
+      "command": "npx",
+      "args": ["-y", "@context7/mcp-server"],
+      "env": {
+        "CONTEXT7_MODE": "development",
+        "CONTEXT7_PROJECT": "windows-ad-kit"
+      }
+    },
+    "playwright": {
+      "command": "npx",
+      "args": ["-y", "@playwright/mcp-server"],
+      "env": {
+        "PLAYWRIGHT_BROWSERS": "chromium",
+        "PLAYWRIGHT_HEADED": "false"
+      }
+    },
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_TOKEN": "${GITHUB_TOKEN}",
+        "GITHUB_REPO": "windows-ad-kit"
+      }
+    },
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem"],
+      "env": {
+        "PROJECT_ROOT": "~/windows-ad-kit",
+        "ALLOWED_PATHS": "src,tests,docs,.claude"
+      }
+    },
+    "database": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-postgres"],
+      "env": {
+        "DATABASE_URL": "${DATABASE_URL}"
+      }
+    }
+  }
+}
