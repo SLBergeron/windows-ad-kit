@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>City Ad Kit - 20 Booked Appointments in 28 Days Guaranteed | Windows & Doors Contractors</title>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary-dark: #1a2332;
+            --primary-blue: #2563eb;
+            --accent-orange: #ff6b35;
+            --success-green: #22c55e;
+            --text-light: #ffffff;
+            --text-gray: #94a3b8;
+            --bg-section: #0f172a;
+            --bg-card: #1e293b;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background-color: var(--primary-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Typography */
+        h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+        }
+        
+        h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+        
+        h3 {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .highlight {
+            color: var(--accent-orange);
+        }
+        
+        .green-highlight {
+            color: var(--success-green);
+        }
+        
+        /* Buttons */
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent-orange), #ff8451);
+            color: white;
+            padding: 20px 40px;
+            font-size: 1.25rem;
+            font-weight: 800;
+            text-decoration: none;
+            border-radius: 8px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+            cursor: pointer;
+            border: none;
+            margin: 20px 0;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(255, 107, 53, 0.4);
+        }
+        
+        /* Header */
+        .header {
+            background: linear-gradient(180deg, var(--bg-section) 0%, var(--primary-dark) 100%);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--accent-orange);
+        }
+        
+        .countdown {
+            background: var(--accent-orange);
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-weight: 700;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.8; }
+            100% { opacity: 1; }
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 80px 0;
+            text-align: center;
+            background: linear-gradient(180deg, var(--primary-dark) 0%, var(--bg-section) 100%);
+        }
+        
+        .badge {
+            display: inline-block;
+            background: var(--success-green);
+            color: var(--primary-dark);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .subheadline {
+            font-size: 1.5rem;
+            color: var(--text-gray);
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+        
+        .guarantee-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(34, 197, 94, 0.1);
+            border: 2px solid var(--success-green);
+            padding: 15px 30px;
+            border-radius: 50px;
+            margin: 30px 0;
+        }
+        
+        .guarantee-badge svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--success-green);
+        }
+        
+        /* Problem Section */
+        .problem-section {
+            padding: 80px 0;
+            background: var(--bg-section);
+        }
+        
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .problem-card {
+            background: var(--bg-card);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .problem-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-orange);
+        }
+        
+        .problem-number {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: var(--accent-orange);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            font-weight: 900;
+            margin-bottom: 15px;
+        }
+        
+        /* Solution Section */
+        .solution-section {
+            padding: 80px 0;
+            background: var(--primary-dark);
+        }
+        
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: start;
+            gap: 15px;
+        }
+        
+        .check-icon {
+            flex-shrink: 0;
+            width: 30px;
+            height: 30px;
+            background: var(--success-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 5px;
+        }
+        
+        .check-icon::after {
+            content: "✓";
+            color: white;
+            font-weight: 900;
+        }
+        
+        /* What's Included */
+        .included-section {
+            padding: 80px 0;
+            background: var(--bg-section);
+        }
+        
+        .kit-components {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin: 50px 0;
+        }
+        
+        .component-card {
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 40px 30px;
+            text-align: center;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .component-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--accent-orange);
+        }
+        
+        .component-card:hover {
+            border-color: var(--accent-orange);
+            transform: translateY(-5px);
+        }
+        
+        .component-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        .component-value {
+            display: block;
+            font-size: 0.9rem;
+            color: var(--success-green);
+            margin-top: 15px;
+            font-weight: 700;
+        }
+        
+        /* Social Proof */
+        .social-proof-section {
+            padding: 80px 0;
+            background: var(--primary-dark);
+        }
+        
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin: 50px 0;
+            text-align: center;
+        }
+        
+        .stat-block {
+            padding: 20px;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--accent-orange);
+            display: block;
+        }
+        
+        .stat-label {
+            color: var(--text-gray);
+            margin-top: 10px;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+        
+        .testimonial-card {
+            background: var(--bg-card);
+            padding: 30px;
+            border-radius: 12px;
+            border-left: 4px solid var(--accent-orange);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: var(--text-gray);
+        }
+        
+        .testimonial-author {
+            font-weight: 700;
+        }
+        
+        .testimonial-company {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+        
+        /* Pricing Section */
+        .pricing-section {
+            padding: 80px 0;
+            background: linear-gradient(180deg, var(--bg-section) 0%, var(--primary-dark) 100%);
+            text-align: center;
+        }
+        
+        .price-box {
+            background: var(--bg-card);
+            border: 3px solid var(--accent-orange);
+            border-radius: 20px;
+            padding: 50px;
+            max-width: 600px;
+            margin: 40px auto;
+            position: relative;
+        }
+        
+        .price-badge {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent-orange);
+            padding: 10px 30px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        
+        .old-price {
+            text-decoration: line-through;
+            color: var(--text-gray);
+            font-size: 1.5rem;
+        }
+        
+        .new-price {
+            font-size: 4rem;
+            font-weight: 900;
+            color: var(--success-green);
+            margin: 20px 0;
+        }
+        
+        .price-features {
+            list-style: none;
+            text-align: left;
+            margin: 30px 0;
+        }
+        
+        .price-features li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        /* FAQ Section */
+        .faq-section {
+            padding: 80px 0;
+            background: var(--bg-section);
+        }
+        
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            background: var(--bg-card);
+            margin-bottom: 20px;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            padding: 25px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: background 0.3s ease;
+        }
+        
+        .faq-question:hover {
+            background: rgba(255, 107, 53, 0.1);
+        }
+        
+        .faq-answer {
+            padding: 0 25px 25px;
+            color: var(--text-gray);
+            display: none;
+        }
+        
+        .faq-answer.active {
+            display: block;
+        }
+        
+        .faq-icon {
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-icon.active {
+            transform: rotate(180deg);
+        }
+        
+        /* Footer CTA */
+        .footer-cta {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--bg-section) 100%);
+            text-align: center;
+        }
+        
+        .urgency-banner {
+            background: rgba(255, 107, 53, 0.1);
+            border: 2px solid var(--accent-orange);
+            padding: 20px;
+            border-radius: 12px;
+            margin: 30px 0;
+            display: inline-block;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.75rem;
+            }
+            
+            .price-box {
+                padding: 30px 20px;
+            }
+            
+            .new-price {
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">CITY AD KIT™</div>
+                <div class="countdown" id="countdown">⏰ OFFER ENDS IN 72 HOURS</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="badge">🔥 LIMITED TIME: 72-HOUR INSTALLATION GUARANTEE</div>
+            
+            <h1>The Only Ad System That <span class="highlight">Guarantees</span><br>
+            20 Booked Appointments in 28 Days<br>
+            <span class="green-highlight">Or We Work For Free</span></h1>
+            
+            <p class="subheadline">Stop wasting $1,000s on agencies that deliver "leads" not appointments.<br>
+            Get the exact campaigns generating $2.3M+ for Windows & Doors contractors.</p>
+            
+            <button class="cta-button">GET INSTANT ACCESS FOR $295 →</button>
+            
+            <div class="guarantee-badge">
+                <svg viewBox="0 0 24 24">
+                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+                <span><strong>100% Money-Back Guarantee</strong> + We Work Until You Get Results</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="problem-section">
+        <div class="container">
+            <h2 style="text-align: center;">Windows & Doors Contractors Get Stuck<br>
+            <span class="highlight">For Only 4 Reasons:</span></h2>
+            
+            <div class="problem-grid">
+                <div class="problem-card">
+                    <span class="problem-number">1</span>
+                    <h3>Not Enough Quality Leads</h3>
+                    <p>You're invisible online while competitors dominate. Your phone barely rings except for price shoppers.</p>
+                </div>
+                
+                <div class="problem-card">
+                    <span class="problem-number">2</span>
+                    <h3>Leads Don't Convert</h3>
+                    <p>You get inquiries but they ghost you, shop around, or were never serious buyers to begin with.</p>
+                </div>
+                
+                <div class="problem-card">
+                    <span class="problem-number">3</span>
+                    <h3>Seasonal Revenue Rollercoaster</h3>
+                    <p>Feast or famine cycles. Busy spring/summer but dead winters eating into your profits.</p>
+                </div>
+                
+                <div class="problem-card">
+                    <span class="problem-number">4</span>
+                    <h3>Marketing Agencies Failing You</h3>
+                    <p>Paying $2,000+/month for "exposure" and "brand awareness" but no actual appointments booked.</p>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 50px;">
+                <h3 style="color: var(--text-gray);">The City Ad Kit solves all 4 problems in one system...</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="solution-section">
+        <div class="container">
+            <h2 style="text-align: center;">Introducing The <span class="highlight">City Ad Kit™</span></h2>
+            <p style="text-align: center; font-size: 1.25rem; color: var(--text-gray); margin-bottom: 40px;">
+                The complete "done-for-you" advertising system that transformed 237+ contractors<br>
+                from struggling to fully booked in less than 30 days.
+            </p>
+            
+            <div class="feature-list">
+                <div class="feature-item">
+                    <div class="check-icon"></div>
+                    <div>
+                        <h4>3 Proven Ad Campaign Templates</h4>
+                        <p style="color: var(--text-gray);">Copy-paste campaigns averaging $47 cost per booked appointment (not just leads!)</p>
+                    </div>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="check-icon"></div>
+                    <div>
+                        <h4>High-Converting Landing Pages</h4>
+                        <p style="color: var(--text-gray);">Mobile-optimized pages that convert 31% of visitors into booked appointments</p>
+                    </div>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="check-icon"></div>
+                    <div>
+                        <h4>SMS Follow-Up Sequences</h4>
+                        <p style="color: var(--text-gray);">7-touch automated flows that book appointments while you sleep</p>
+                    </div>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="check-icon"></div>
+                    <div>
+                        <h4>72-Hour Installation Support</h4>
+                        <p style="color: var(--text-gray);">We personally help you launch everything within 3 days or it's free</p>
+                    </div>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="check-icon"></div>
+                    <div>
+                        <h4>Seasonal Campaign Calendar</h4>
+                        <p style="color: var(--text-gray);">12-month blueprint to eliminate slow seasons forever</p>
+                    </div>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="check-icon"></div>
+                    <div>
+                        <h4>Grand-Slam Guarantee</h4>
+                        <p style="color: var(--text-gray);">20 appointments in 28 days or we work for free until you get them</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center;">
+                <button class="cta-button">YES! I WANT THE CITY AD KIT →</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- What's Included Section -->
+    <section class="included-section">
+        <div class="container">
+            <h2 style="text-align: center;">Everything You Get With<br>
+            <span class="highlight">The City Ad Kit™</span></h2>
+            
+            <div class="kit-components">
+                <div class="component-card">
+                    <div class="component-icon">📱</div>
+                    <h3>Campaign Template #1</h3>
+                    <h4>"Emergency Repair Rush"</h4>
+                    <p style="color: var(--text-gray);">Targets homeowners with damaged windows/doors needing immediate help. Highest urgency = fastest closes.</p>
+                    <span class="component-value">VALUE: $497</span>
+                </div>
+                
+                <div class="component-card">
+                    <div class="component-icon">🏠</div>
+                    <h3>Campaign Template #2</h3>
+                    <h4>"Energy Savings Calculator"</h4>
+                    <p style="color: var(--text-gray);">Interactive tool showing exact monthly savings with new windows. Converts skeptics into believers.</p>
+                    <span class="component-value">VALUE: $497</span>
+                </div>
+                
+                <div class="component-card">
+                    <div class="component-icon">💰</div>
+                    <h3>Campaign Template #3</h3>
+                    <h4>"Tax Credit Maximizer"</h4>
+                    <p style="color: var(--text-gray);">Leverages government incentives and rebates. Creates urgency with deadline-driven offers.</p>
+                    <span class="component-value">VALUE: $497</span>
+                </div>
+                
+                <div class="component-card">
+                    <div class="component-icon">🎯</div>
+                    <h3>Landing Page Templates</h3>
+                    <h4>3 High-Converting Designs</h4>
+                    <p style="color: var(--text-gray);">Mobile-first pages with appointment schedulers, social proof, and trust signals built in.</p>
+                    <span class="component-value">VALUE: $797</span>
+                </div>
+                
+                <div class="component-card">
+                    <div class="component-icon">📲</div>
+                    <h3>SMS Automation Flows</h3>
+                    <h4>7-Message Sequences</h4>
+                    <p style="color: var(--text-gray);">Follow-up messages that nurture leads and book appointments on autopilot. 89% open rates.</p>
+                    <span class="component-value">VALUE: $397</span>
+                </div>
+                
+                <div class="component-card">
+                    <div class="component-icon">🚀</div>
+                    <h3>72-Hour Launch Support</h3>
+                    <h4>Done-With-You Setup</h4>
+                    <p style="color: var(--text-gray);">Our team helps you implement everything in 72 hours or less. Includes 1-on-1 Zoom support.</p>
+                    <span class="component-value">VALUE: $997</span>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 50px;">
+                <p style="font-size: 1.5rem; color: var(--text-gray);">Total Value: <span style="text-decoration: line-through;">$3,682</span></p>
+                <p style="font-size: 2rem; color: var(--success-green); font-weight: 900;">Your Investment Today: Only $295</p>
+                <button class="cta-button">SECURE MY CITY AD KIT NOW →</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof Section -->
+    <section class="social-proof-section">
+        <div class="container">
+            <h2 style="text-align: center;">Real Contractors.<br>
+            <span class="highlight">Real Results.</span></h2>
+            
+            <div class="stats-row">
+                <div class="stat-block">
+                    <span class="stat-number">237+</span>
+                    <span class="stat-label">Contractors Using City Ad Kit</span>
+                </div>
+                <div class="stat-block">
+                    <span class="stat-number">$2.3M+</span>
+                    <span class="stat-label">Revenue Generated</span>
+                </div>
+                <div class="stat-block">
+                    <span class="stat-number">8,400+</span>
+                    <span class="stat-label">Appointments Booked</span>
+                </div>
+                <div class="stat-block">
+                    <span class="stat-number">$47</span>
+                    <span class="stat-label">Avg. Cost Per Appointment</span>
+                </div>
+            </div>
+            
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"43 appointments booked in our first month. We had to hire 2 new installers to keep up. This system is insane!"</p>
+                    <div class="testimonial-author">Mike Richardson</div>
+                    <div class="testimonial-company">Premier Windows & Doors, Dallas TX</div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Finally stopped paying $3k/month to agencies. City Ad Kit books more appointments for 1/10th the cost."</p>
+                    <div class="testimonial-author">Sarah Chen</div>
+                    <div class="testimonial-company">ClearView Installation Co., Seattle WA</div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"$127,000 in new contracts from the Energy Savings campaign alone. ROI is absolutely ridiculous."</p>
+                    <div class="testimonial-author">Tom Bradley</div>
+                    <div class="testimonial-company">Bradley Windows Group, Phoenix AZ</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing-section">
+        <div class="container">
+            <h2>Lock In Your <span class="highlight">City Ad Kit™</span> Today</h2>
+            <p style="font-size: 1.25rem; color: var(--text-gray);">One-time investment. Lifetime access. Unlimited appointments.</p>
+            
+            <div class="price-box">
+                <div class="price-badge">Save $3,387 Today</div>
+                
+                <div class="old-price">Regular Price: $3,682</div>
+                <div class="new-price">$295</div>
+                <p style="color: var(--success-green); font-weight: 700; font-size: 1.25rem;">ONE-TIME PAYMENT</p>
+                
+                <ul class="price-features">
+                    <li><span class="check-icon" style="width: 20px; height: 20px;"></span> 3 Proven Campaign Templates ($1,491 Value)</li>
+                    <li><span class="check-icon" style="width: 20px; height: 20px;"></span> Landing Page System ($797 Value)</li>
+                    <li><span class="check-icon" style="width: 20px; height: 20px;"></span> SMS Automation Flows ($397 Value)</li>
+                    <li><span class="check-icon" style="width: 20px; height: 20px;"></span> 72-Hour Installation Support ($997 Value)</li>
+                    <li><span class="check-icon" style="width: 20px; height: 20px;"></span> 20 Appointments Guarantee (Priceless)</li>
+                    <li><span class="check-icon" style="width: 20px; height: 20px;"></span> Lifetime Updates & Support</li>
+                </ul>
+                
+                <button class="cta-button" style="width: 100%; max-width: 400px;">
+                    GET INSTANT ACCESS →
+                </button>
+                
+                <p style="color: var(--text-gray); margin-top: 20px; font-size: 0.9rem;">
+                    🔒 Secure checkout | 💳 All cards accepted | ✅ Instant access
+                </p>
+            </div>
+            
+            <div class="guarantee-badge" style="margin: 40px auto;">
+                <svg viewBox="0 0 24 24" style="width: 30px; height: 30px;">
+                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+                <span><strong>Iron-Clad Guarantee:</strong> 20 booked appointments in 28 days or we work for free until you get them. Plus 30-day money-back guarantee.</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 50px;">Frequently Asked <span class="highlight">Questions</span></h2>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>Will this work in my city/market?</span>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! The City Ad Kit has been successfully deployed in 237+ markets across the US and Canada, from major metros to towns with 50,000 people. The templates are customizable for any location - you simply input your city name, service areas, and local details. The campaigns target universal pain points (energy costs, home comfort, security) that resonate everywhere.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>I'm not tech-savvy. Can I really set this up?</span>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutely. Everything is copy-and-paste simple. Plus, you get our 72-hour installation guarantee - we literally hold your hand through setup via Zoom, help you customize everything, and don't stop until your campaigns are live and generating appointments. If you can send an email, you can use the City Ad Kit.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>How much should I budget for actual ad spend?</span>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Most contractors start with $30-50/day ($900-1500/month) and scale up as appointments come in. At our average $47 cost per appointment, that's 19-32 booked appointments per month. Many contractors reinvest profits to scale to $100-200/day within 90 days. The key is starting small, proving ROI, then scaling what works.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>What if I don't get 20 appointments in 28 days?</span>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Then we work for free until you do. Period. We'll optimize your campaigns, adjust targeting, rewrite ads, rebuild pages - whatever it takes. We've never had a contractor who followed the system not hit this goal. Plus, you're covered by our 30-day money-back guarantee if you're not completely satisfied.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>Do I need any special software or tools?</span>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Just a Facebook/Instagram ads account (free to create) and a way to receive SMS messages. The landing pages can be hosted on any website platform (WordPress, Wix, Squarespace, etc.) or we can help you set up a simple solution. All the SMS sequences work with any CRM that supports text messaging, or we'll show you free alternatives.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>How is this different from hiring an agency?</span>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Agencies charge $2,000-5,000/month forever and often deliver "vanity metrics" like impressions and clicks. The City Ad Kit is a one-time $295 investment for the exact campaigns already working for 237+ contractors. You own everything, control everything, and keep 100% of profits. No monthly fees, no contracts, no excuses - just appointments.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer CTA -->
+    <section class="footer-cta">
+        <div class="container">
+            <h2>Your Competition Is Booking<br>
+            <span class="highlight">20+ Appointments</span> This Month.<br>
+            <span class="green-highlight">Are You?</span></h2>
+            
+            <div class="urgency-banner">
+                <p style="font-size: 1.25rem; margin: 0;">
+                    <strong>⚠️ SPECIAL PRICING ENDS IN 72 HOURS</strong><br>
+                    <span style="color: var(--text-gray);">Price increases to $497 when timer hits zero</span>
+                </p>
+            </div>
+            
+            <p style="font-size: 1.25rem; color: var(--text-gray); max-width: 800px; margin: 30px auto;">
+                Every day you wait, your competitors are stealing your customers with better online marketing. 
+                The City Ad Kit levels the playing field - giving you the same weapons the big companies use, 
+                for less than the cost of a single door installation.
+            </p>
+            
+            <button class="cta-button" style="font-size: 1.5rem; padding: 25px 50px;">
+                SECURE YOUR CITY AD KIT FOR $295 →
+            </button>
+            
+            <p style="color: var(--text-gray); margin-top: 30px;">
+                <strong>Remember:</strong> 20 booked appointments in 28 days guaranteed<br>
+                or we work for free until you get them. You have nothing to lose.
+            </p>
+        </div>
+    </section>
+
+    <script>
+        // FAQ Toggle
+        function toggleFAQ(element) {
+            const answer = element.nextElementSibling;
+            const icon = element.querySelector('.faq-icon');
+            
+            answer.classList.toggle('active');
+            icon.classList.toggle('active');
+        }
+        
+        // Countdown Timer
+        function updateCountdown() {
+            const endDate = new Date();
+            endDate.setHours(endDate.getHours() + 72);
+            
+            const timer = setInterval(function() {
+                const now = new Date().getTime();
+                const distance = endDate - now;
+                
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                
+                document.getElementById('countdown').innerHTML = 
+                    `⏰ ${hours}h ${minutes}m ${seconds}s LEFT`;
+                
+                if (distance < 0) {
+                    clearInterval(timer);
+                    document.getElementById('countdown').innerHTML = "OFFER EXPIRED";
+                }
+            }, 1000);
+        }
+        
+        // Initialize countdown on page load
+        updateCountdown();
+        
+        // Smooth scroll for CTA buttons
+        document.querySelectorAll('.cta-button').forEach(button => {
+            button.addEventListener('click', function() {
+                document.querySelector('.pricing-section').scrollIntoView({ 
+                    behavior: 'smooth' 
+                });
+            });
+        });
+    </script>
+</body>
+</html>

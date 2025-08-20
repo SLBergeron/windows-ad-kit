@@ -1,0 +1,43 @@
+{
+  "id": "evt_real_database_test",
+  "object": "event",
+  "api_version": "2024-06-20",
+  "created": 1327000000,
+  "data": {
+    "object": {
+      "id": "cs_real_database_test_12345",
+      "object": "checkout.session",
+      "customer": "cus_real_test_customer",
+      "customer_details": {
+        "email": "contractor@testwindows.com",
+        "name": "Mike's Windows LLC",
+        "address": {
+          "city": "Dallas",
+          "country": "US",
+          "line1": "456 Business Blvd",
+          "line2": "Suite 100",
+          "postal_code": "75201",
+          "state": "TX"
+        }
+      },
+      "shipping_details": {
+        "address": {
+          "city": "Dallas",
+          "country": "US",
+          "line1": "456 Business Blvd",
+          "line2": "Suite 100",
+          "postal_code": "75201",
+          "state": "TX"
+        }
+      },
+      "metadata": {
+        "business_name": "Mike's Windows LLC",
+        "city": "Dallas",
+        "email": "contractor@testwindows.com"
+      },
+      "payment_status": "paid",
+      "status": "complete"
+    }
+  },
+  "type": "checkout.session.completed"
+}
