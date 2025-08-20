@@ -1,7 +1,7 @@
 # Windows Ad Kit - Project Context
 
 ## Identity
-- **Domain**: windowsadkit.com
+- **Domain**: windowadkit.com
 - **Purpose**: Automated ad campaigns for Windows & Door contractors
 - **Promise**: 20 booked appointments in 28 days, guaranteed
 
