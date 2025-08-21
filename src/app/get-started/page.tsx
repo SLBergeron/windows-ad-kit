@@ -1,8 +1,11 @@
 'use client'
 
 import { useState, useRef } from 'react'
+import { useStyles, globalKeyframes } from '../../styles'
+import { Navigation } from '../../components/ui'
 
 export default function GetStartedPage() {
+  const { theme, components, utils } = useStyles()
   const [businessName, setBusinessName] = useState('')
   const [city, setCity] = useState('')
   const [email, setEmail] = useState('')
@@ -91,178 +94,94 @@ export default function GetStartedPage() {
     orderFormRef.current?.scrollIntoView({ behavior: 'smooth' })
   }
 
-  const styles = {
-    // Modern Design System - Stripe Inspired
-    container: {
-      backgroundColor: '#0a0e27',
-      color: '#ffffff',
-      minHeight: '100vh',
-      fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-      lineHeight: 1.6,
-    },
-    section: {
-      padding: '80px 0',
-      maxWidth: '1200px',
-      margin: '0 auto',
-      paddingLeft: '24px',
-      paddingRight: '24px',
-    },
-    sectionNarrow: {
-      padding: '80px 0',
-      maxWidth: '800px',
-      margin: '0 auto',
-      paddingLeft: '24px',
-      paddingRight: '24px',
-    },
-    gradient: {
-      background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-      WebkitBackgroundClip: 'text',
-      WebkitTextFillColor: 'transparent',
-    },
-    button: {
-      background: 'linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%)',
-      color: 'white',
-      border: 'none',
-      borderRadius: '12px',
-      padding: '18px 36px',
-      fontSize: '18px',
-      fontWeight: 700,
-      cursor: 'pointer',
-      transition: 'all 0.3s ease',
-      boxShadow: '0 8px 32px rgba(255, 107, 107, 0.3)',
-      textTransform: 'none',
-    },
-    buttonLarge: {
-      padding: '24px 48px',
-      fontSize: '20px',
-      borderRadius: '16px',
-    },
-    card: {
-      background: 'linear-gradient(145deg, #1a1f3a 0%, #2d3561 100%)',
-      borderRadius: '24px',
-      padding: '40px',
-      border: '1px solid rgba(255, 255, 255, 0.1)',
-      backdropFilter: 'blur(20px)',
-      boxShadow: '0 20px 40px rgba(0, 0, 0, 0.3)',
-    },
-    input: {
-      width: '100%',
-      padding: '16px 20px',
-      fontSize: '16px',
-      border: '2px solid rgba(255, 255, 255, 0.1)',
-      borderRadius: '12px',
-      backgroundColor: 'rgba(255, 255, 255, 0.05)',
-      color: '#ffffff',
-      transition: 'all 0.3s ease',
-      boxSizing: 'border-box' as const,
-    },
-  }
 
   return (
-    <div style={styles.container}>
+    <div style={components.layout.page.default}>
       {/* Navigation */}
-      <nav style={{
-        position: 'sticky' as const,
-        top: 0,
-        background: 'rgba(10, 14, 39, 0.95)',
-        backdropFilter: 'blur(20px)',
-        borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
-        padding: '20px 0',
-        zIndex: 1000,
-      }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <div style={{ fontSize: '24px', fontWeight: 900, background: 'linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
-            Windows Ad Kit
-          </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-            <a href="/create-campaign" style={{
-              color: '#a0a9c0',
-              textDecoration: 'none',
-              fontSize: '14px',
-              fontWeight: 500,
-            }}>
-              Campaign Creator
-            </a>
-            <div style={{
-              background: 'linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%)',
-              padding: '10px 20px',
-              borderRadius: '25px',
-              fontSize: '14px',
-              fontWeight: 700,
-              animation: 'pulse 2s infinite',
-            }}>
-              🔥 Limited Time: $295 (Reg. $997)
-            </div>
-          </div>
-        </div>
-      </nav>
+      <Navigation 
+        items={[]}
+        showCTA={true}
+        ctaText="Limited Year End only $295"
+        showLogin={true}
+      />
 
       {/* Hero Section - Problem Agitation */}
-      <section style={{ ...styles.section, textAlign: 'center', paddingTop: '120px' }}>
+      <section style={{
+        ...components.layout.container.base,
+        textAlign: 'center',
+        paddingTop: '60px',
+        paddingBottom: theme.spacing['8xl']
+      }}>
         <div style={{
           display: 'inline-block',
           background: 'rgba(255, 107, 107, 0.1)',
-          border: '1px solid rgba(255, 107, 107, 0.3)',
-          padding: '12px 24px',
-          borderRadius: '30px',
-          marginBottom: '30px',
-          fontSize: '14px',
-          fontWeight: 600,
-          color: '#ff6b6b',
+          border: `1px solid ${theme.colors.primary}`,
+          padding: `${theme.spacing.md} ${theme.spacing['2xl']}`,
+          borderRadius: theme.borderRadius['3xl'],
+          marginBottom: theme.spacing['3xl'],
+          fontSize: theme.typography.fontSize.sm,
+          fontWeight: theme.typography.fontWeight.semibold,
+          color: theme.colors.primary,
         }}>
           ⚠️ ATTENTION WINDOW & DOOR CONTRACTORS
         </div>
 
         <h1 style={{
           fontSize: 'clamp(3rem, 8vw, 5.5rem)',
-          fontWeight: 900,
-          lineHeight: 1.1,
-          marginBottom: '30px',
+          fontWeight: theme.typography.fontWeight.black,
+          lineHeight: theme.typography.lineHeight.tight,
+          marginBottom: theme.spacing['3xl'],
           letterSpacing: '-0.02em',
+          color: theme.colors.text.primary
         }}>
           Tired of Your Phone
           <br />
-          <span style={styles.gradient}>Not Ringing?</span>
+          <span style={components.text.gradient.primary}>Not Ringing?</span>
         </h1>
 
         <div style={{
-          fontSize: '24px',
-          color: '#a0a9c0',
-          marginBottom: '50px',
+          fontSize: theme.typography.fontSize['2xl'],
+          color: theme.colors.text.secondary,
+          marginBottom: theme.spacing['5xl'],
           maxWidth: '800px',
-          margin: '0 auto 50px',
+          margin: `0 auto ${theme.spacing['5xl']}`,
         }}>
-          While your competitors book <strong style={{ color: '#ff6b6b' }}>20+ appointments every month</strong>, 
+          While your competitors book <strong style={{ color: theme.colors.primary }}>20+ appointments every month</strong>, 
           you're stuck waiting for referrals and praying the phone rings...
         </div>
 
         <button
           onClick={scrollToOrder}
-          style={{ ...styles.button, ...styles.buttonLarge }}
+          style={{
+            ...components.button.base,
+            ...components.button.primary,
+            ...components.button.large
+          }}
           onMouseEnter={(e) => {
             e.currentTarget.style.transform = 'translateY(-2px)'
             e.currentTarget.style.boxShadow = '0 12px 40px rgba(255, 107, 107, 0.4)'
           }}
           onMouseLeave={(e) => {
             e.currentTarget.style.transform = 'translateY(0)'
-            e.currentTarget.style.boxShadow = '0 8px 32px rgba(255, 107, 107, 0.3)'
+            e.currentTarget.style.boxShadow = theme.shadows.lg
           }}
         >
           Get My Windows Ad Kit Now → Only $295
         </button>
 
         {/* Optional VSL Toggle */}
-        <div style={{ marginTop: '40px' }}>
+        <div style={{ marginTop: theme.spacing['4xl'] }}>
           <button
             onClick={() => setShowVSL(!showVSL)}
             style={{
               background: 'transparent',
-              border: '1px solid rgba(255, 255, 255, 0.2)',
-              color: '#a0a9c0',
-              padding: '12px 24px',
-              borderRadius: '8px',
+              border: `1px solid ${theme.colors.border.light}`,
+              color: theme.colors.text.secondary,
+              padding: `${theme.spacing.md} ${theme.spacing['2xl']}`,
+              borderRadius: theme.borderRadius.md,
               cursor: 'pointer',
-              fontSize: '14px',
+              fontSize: theme.typography.fontSize.sm,
+              fontFamily: theme.typography.fontFamily.base
             }}
           >
             {showVSL ? '📖 Read the story instead' : '🎬 Watch the story (3 min video)'}
@@ -271,31 +190,35 @@ export default function GetStartedPage() {
 
         {showVSL && (
           <div style={{
-            marginTop: '40px',
+            marginTop: theme.spacing['4xl'],
             maxWidth: '800px',
-            margin: '40px auto 0',
-            ...styles.card,
+            margin: `${theme.spacing['4xl']} auto 0`,
+            ...components.card.base,
           }}>
             <div style={{
               aspectRatio: '16/9',
               background: 'rgba(255, 255, 255, 0.1)',
-              borderRadius: '12px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              fontSize: '18px',
-              color: '#a0a9c0',
+              borderRadius: theme.borderRadius.lg,
+              ...utils.flex.center,
+              fontSize: theme.typography.fontSize.lg,
+              color: theme.colors.text.secondary,
+              flexDirection: 'column'
             }}>
               🎬 VSL Placeholder (3:47)
               <br />
-              <span style={{ fontSize: '14px' }}>Video will embed here</span>
+              <span style={{ fontSize: theme.typography.fontSize.sm }}>Video will embed here</span>
             </div>
           </div>
         )}
       </section>
 
       {/* Problem Section */}
-      <section style={{ ...styles.section, background: 'rgba(255, 255, 255, 0.02)' }}>
+      <section style={{
+        ...components.layout.container.base,
+        paddingTop: theme.spacing['8xl'],
+        paddingBottom: theme.spacing['8xl'],
+        background: 'rgba(255, 255, 255, 0.02)'
+      }}>
         <div style={{ textAlign: 'center', marginBottom: '80px' }}>
           <h2 style={{
             fontSize: 'clamp(2rem, 5vw, 3.5rem)',
@@ -338,7 +261,7 @@ export default function GetStartedPage() {
             }
           ].map((problem) => (
             <div key={problem.number} style={{
-              ...styles.card,
+              ...components.card.base,
               textAlign: 'center',
               position: 'relative',
               overflow: 'hidden',
@@ -374,14 +297,21 @@ export default function GetStartedPage() {
           <p style={{ fontSize: '24px', color: '#a0a9c0', marginBottom: '30px' }}>
             Sound familiar? Here's the solution that's already working for 200+ contractors...
           </p>
-          <button onClick={scrollToOrder} style={styles.button}>
+          <button onClick={scrollToOrder} style={{
+            ...components.button.base,
+            ...components.button.primary
+          }}>
             Show Me The Solution →
           </button>
         </div>
       </section>
 
       {/* Social Proof */}
-      <section style={styles.section}>
+      <section style={{
+        ...components.layout.container.base,
+        paddingTop: theme.spacing['8xl'],
+        paddingBottom: theme.spacing['8xl']
+      }}>
         <div style={{ textAlign: 'center', marginBottom: '60px' }}>
           <h2 style={{
             fontSize: 'clamp(2rem, 5vw, 3rem)',
@@ -444,7 +374,7 @@ export default function GetStartedPage() {
             },
           ].map((testimonial, index) => (
             <div key={index} style={{
-              ...styles.card,
+              ...components.card.base,
               borderLeft: '4px solid #ff6b6b',
             }}>
               <div style={{
@@ -487,7 +417,12 @@ export default function GetStartedPage() {
       </section>
 
       {/* What's Included - Value Stack */}
-      <section style={{ ...styles.section, background: 'rgba(255, 255, 255, 0.02)' }}>
+      <section style={{ 
+        ...components.layout.container.base,
+        paddingTop: theme.spacing['8xl'],
+        paddingBottom: theme.spacing['8xl'],
+        background: 'rgba(255, 255, 255, 0.02)' 
+      }}>
         <div style={{ textAlign: 'center', marginBottom: '80px' }}>
           <h2 style={{
             fontSize: 'clamp(2rem, 5vw, 3.5rem)',
@@ -496,7 +431,7 @@ export default function GetStartedPage() {
           }}>
             Everything You Get With The
             <br />
-            <span style={styles.gradient}>Windows Ad Kit</span>
+            <span style={components.text.gradient.primary}>Windows Ad Kit</span>
           </h2>
         </div>
 
@@ -544,7 +479,7 @@ export default function GetStartedPage() {
             },
           ].map((item, index) => (
             <div key={index} style={{
-              ...styles.card,
+              ...components.card.base,
               textAlign: 'center',
               position: 'relative',
             }}>
@@ -588,7 +523,7 @@ export default function GetStartedPage() {
         <div style={{
           textAlign: 'center',
           marginTop: '80px',
-          ...styles.card,
+          ...components.card.base,
         }}>
           <div style={{ fontSize: '20px', color: '#a0a9c0', marginBottom: '16px' }}>
             Total Value: <span style={{ textDecoration: 'line-through' }}>$3,482</span>
@@ -610,14 +545,23 @@ export default function GetStartedPage() {
           }}>
             Save $3,187 • One-time payment • Lifetime access
           </div>
-          <button onClick={scrollToOrder} style={{ ...styles.button, ...styles.buttonLarge }}>
+          <button onClick={scrollToOrder} style={{
+            ...components.button.base,
+            ...components.button.primary,
+            ...components.button.large
+          }}>
             Secure My Windows Ad Kit Now →
           </button>
         </div>
       </section>
 
       {/* Order Form */}
-      <section ref={orderFormRef} style={{ ...styles.sectionNarrow, paddingTop: '120px' }}>
+      <section ref={orderFormRef} style={{
+        ...components.layout.container.base,
+        maxWidth: '800px',
+        paddingTop: '120px',
+        paddingBottom: theme.spacing['8xl']
+      }}>
         <div style={{ textAlign: 'center', marginBottom: '60px' }}>
           <h2 style={{
             fontSize: 'clamp(2rem, 5vw, 3rem)',
@@ -631,7 +575,7 @@ export default function GetStartedPage() {
           </p>
         </div>
 
-        <div style={styles.card}>
+        <div style={components.card.base}>
           <div style={{
             display: 'grid',
             gap: '24px',
@@ -654,8 +598,14 @@ export default function GetStartedPage() {
                 onChange={(e) => setBusinessName(e.target.value)}
                 placeholder="e.g. Mike's Premium Windows"
                 style={{
-                  ...styles.input,
-                  borderColor: businessName ? 'rgba(255, 107, 107, 0.3)' : 'rgba(255, 255, 255, 0.1)',
+                  width: '100%',
+                  padding: theme.spacing.md,
+                  borderRadius: theme.borderRadius.md,
+                  border: `1px solid ${businessName ? 'rgba(255, 107, 107, 0.3)' : 'rgba(255, 255, 255, 0.1)'}`,
+                  fontSize: theme.typography.fontSize.base,
+                  fontFamily: theme.typography.fontFamily.base,
+                  backgroundColor: theme.colors.background.card,
+                  color: theme.colors.text.primary
                 }}
                 onFocus={(e) => e.target.style.borderColor = '#ff6b6b'}
                 onBlur={(e) => e.target.style.borderColor = businessName ? 'rgba(255, 107, 107, 0.3)' : 'rgba(255, 255, 255, 0.1)'}
@@ -679,8 +629,14 @@ export default function GetStartedPage() {
                 onChange={(e) => setCity(e.target.value)}
                 placeholder="e.g. Austin"
                 style={{
-                  ...styles.input,
-                  borderColor: city ? 'rgba(255, 107, 107, 0.3)' : 'rgba(255, 255, 255, 0.1)',
+                  width: '100%',
+                  padding: theme.spacing.md,
+                  borderRadius: theme.borderRadius.md,
+                  border: `1px solid ${city ? 'rgba(255, 107, 107, 0.3)' : 'rgba(255, 255, 255, 0.1)'}`,
+                  fontSize: theme.typography.fontSize.base,
+                  fontFamily: theme.typography.fontFamily.base,
+                  backgroundColor: theme.colors.background.card,
+                  color: theme.colors.text.primary
                 }}
                 onFocus={(e) => e.target.style.borderColor = '#ff6b6b'}
                 onBlur={(e) => e.target.style.borderColor = city ? 'rgba(255, 107, 107, 0.3)' : 'rgba(255, 255, 255, 0.1)'}
@@ -704,8 +660,14 @@ export default function GetStartedPage() {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="your@email.com"
                 style={{
-                  ...styles.input,
-                  borderColor: email ? 'rgba(255, 107, 107, 0.3)' : 'rgba(255, 255, 255, 0.1)',
+                  width: '100%',
+                  padding: theme.spacing.md,
+                  borderRadius: theme.borderRadius.md,
+                  border: `1px solid ${email ? 'rgba(255, 107, 107, 0.3)' : 'rgba(255, 255, 255, 0.1)'}`,
+                  fontSize: theme.typography.fontSize.base,
+                  fontFamily: theme.typography.fontFamily.base,
+                  backgroundColor: theme.colors.background.card,
+                  color: theme.colors.text.primary
                 }}
                 onFocus={(e) => e.target.style.borderColor = '#ff6b6b'}
                 onBlur={(e) => e.target.style.borderColor = email ? 'rgba(255, 107, 107, 0.3)' : 'rgba(255, 255, 255, 0.1)'}
@@ -717,8 +679,9 @@ export default function GetStartedPage() {
             onClick={handlePurchase}
             disabled={!businessName || !city || !email || isProcessing}
             style={{
-              ...styles.button,
-              ...styles.buttonLarge,
+              ...components.button.base,
+              ...components.button.primary,
+              ...components.button.large,
               width: '100%',
               opacity: (!businessName || !city || !email || isProcessing) ? 0.6 : 1,
               cursor: (!businessName || !city || !email || isProcessing) ? 'not-allowed' : 'pointer',
@@ -759,7 +722,12 @@ export default function GetStartedPage() {
       </section>
 
       {/* FAQ Section */}
-      <section style={styles.sectionNarrow}>
+      <section style={{
+        ...components.layout.container.base,
+        maxWidth: '800px',
+        paddingTop: theme.spacing['8xl'],
+        paddingBottom: theme.spacing['8xl']
+      }}>
         <div style={{ textAlign: 'center', marginBottom: '60px' }}>
           <h2 style={{
             fontSize: 'clamp(2rem, 5vw, 3rem)',
@@ -790,7 +758,7 @@ export default function GetStartedPage() {
             },
           ].map((faq, index) => (
             <details key={index} style={{
-              ...styles.card,
+              ...components.card.base,
               cursor: 'pointer',
             }}>
               <summary style={{
@@ -816,7 +784,13 @@ export default function GetStartedPage() {
       </section>
 
       {/* Final CTA */}
-      <section style={{ ...styles.section, textAlign: 'center', background: 'rgba(255, 255, 255, 0.02)' }}>
+      <section style={{ 
+        ...components.layout.container.base,
+        paddingTop: theme.spacing['8xl'],
+        paddingBottom: theme.spacing['8xl'],
+        textAlign: 'center', 
+        background: 'rgba(255, 255, 255, 0.02)' 
+      }}>
         <h2 style={{
           fontSize: 'clamp(2rem, 5vw, 3.5rem)',
           fontWeight: 900,
@@ -824,7 +798,7 @@ export default function GetStartedPage() {
         }}>
           Your Competitors Are Booking
           <br />
-          <span style={styles.gradient}>20+ Appointments</span> This Month.
+          <span style={components.text.gradient.primary}>20+ Appointments</span> This Month.
           <br />
           <span style={{ color: '#ff6b6b' }}>Are You?</span>
         </h2>
@@ -849,7 +823,13 @@ export default function GetStartedPage() {
 
         <button
           onClick={scrollToOrder}
-          style={{ ...styles.button, ...styles.buttonLarge, fontSize: '28px', padding: '30px 60px' }}
+          style={{
+            ...components.button.base,
+            ...components.button.primary,
+            ...components.button.large,
+            fontSize: '28px', 
+            padding: '30px 60px'
+          }}
         >
           Secure Your Windows Ad Kit for $295 →
         </button>
@@ -888,6 +868,8 @@ export default function GetStartedPage() {
         details[open] > summary::before {
           transform: rotate(45deg);
         }
+        
+        ${globalKeyframes}
       `}</style>
     </div>
   )
