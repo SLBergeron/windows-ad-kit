@@ -1,7 +1,6 @@
 'use client'
 
 import React from 'react'
-import { Flex, Column, Text, Badge, Button } from '@once-ui-system/core'
 import { useRouter } from 'next/navigation'
 
 interface NavigationItem {
@@ -18,13 +17,6 @@ interface NavigationProps {
   className?: string
 }
 
-const defaultItems: NavigationItem[] = [
-  { label: 'Campaign Creator', href: '/create-campaign' },
-  { label: 'My Campaigns', href: '/my-campaigns' },
-  { label: 'Analytics', href: '/analytics' },
-  { label: 'Leads', href: '/leads' }
-]
-
 export function Navigation({ 
   items = [], 
   showCTA = true,
@@ -35,179 +27,168 @@ export function Navigation({
   const router = useRouter()
 
   return (
-    <>
-      {/* Spacer div to ensure background shows above nav */}
-      <div style={{ height: '80px' }} />
-      
-      <Flex
-        as="nav"
-        position="fixed"
-        top="0"
-        left="0"
-        right="0"
-        fillWidth
-        zIndex={1000}
-        background="transparent"
-        paddingY="m"
-        className={className}
-        style={{
-          backdropFilter: 'blur(20px)',
-          backgroundColor: 'rgba(10, 14, 39, 0.85)',
-          borderBottom: '1px solid rgba(255, 107, 107, 0.1)',
-        }}
-      >
-        <Column maxWidth="xl" fillWidth paddingX="l">
-          <Flex justifyContent="space-between" alignItems="center" fillWidth>
-            {/* Logo Section */}
-            <Flex alignItems="center" gap="m" style={{ cursor: 'pointer' }} onClick={() => router.push('/')}>
-              <div style={{ width: '40px', height: '40px' }}>
-                <svg 
-                  width="40" 
-                  height="40" 
-                  viewBox="0 0 336 133" 
-                  fill="none" 
-                  xmlns="http://www.w3.org/2000/svg"
-                  style={{ width: '100%', height: '100%' }}
-                >
-                  <path d="M45.8853 31.74L25.0107 96.7133L24.1825 99.2811L26.818 99.38L80.782 101.38L83.4175 101.474L84.2456 98.9008L105.12 33.9315L105.943 31.369H105.985L105.157 33.9419L103.37 39.5044V101.228L83.777 100.484L83.4541 101.489L80.8186 101.395L44.2919 100.041V104.76L47.1774 104.869L106.256 107.114L109.142 107.223V28.578L106.256 28.4686L47.1774 26.2238L44.2919 26.1144V36.677L45.8753 31.7395L45.8853 31.74ZM82.8333 39.6255L89.776 51.7765L90.9322 51.1203L83.9896 38.9692L82.8333 39.6255ZM81.9635 45.1776L85.9062 52.0787L87.0625 51.4224L83.1198 44.5213L81.9635 45.1776ZM42.2609 71.5629L50.9691 86.8083L52.1254 86.1468L43.4171 70.9015L42.2609 71.5629ZM40.8806 76.2088L46.0942 85.3285L47.2505 84.6723L42.0369 75.5525L40.8806 76.2088ZM89.9019 64.7036L67.1099 63.8598L76.235 35.4638L99.027 36.3076L89.9019 64.7036ZM73.1206 35.3489L63.9955 63.7449L41.2089 62.9012L50.3339 34.5052L73.1206 35.3489ZM40.2353 65.9369L63.0219 66.7807L53.8969 95.1713L31.1102 94.3276L40.2353 65.9369ZM57.0113 95.2863L66.1363 66.8956L88.9283 67.7393L79.8033 96.13L57.0113 95.2863Z" fill="#FF6B6B"/>
-                  <path d="M152.72 52.4L158.72 35H165.44L153.64 64.56L144.84 46.16L136 64.56L124.24 35H130.96L137.04 52.4L144.84 33.6L152.72 52.4ZM168.681 35H174.481V63H168.681V35ZM200.437 35H205.957V64.4L186.037 45.64V63H180.517V33.6L200.437 52.36V35ZM212.04 35H217.88V63H212.04V35ZM221.56 63H215.72V57.8H221.36C222.587 57.8 223.747 57.64 224.84 57.32C225.933 56.9733 226.893 56.44 227.72 55.72C228.547 55 229.187 54.0933 229.64 53C230.12 51.88 230.36 50.5467 230.36 49C230.36 47.4533 230.12 46.1333 229.64 45.04C229.187 43.92 228.547 43 227.72 42.28C226.893 41.56 225.933 41.04 224.84 40.72C223.747 40.3733 222.587 40.2 221.36 40.2H215.72V35H221.56C224.493 35 227.053 35.5733 229.24 36.72C231.453 37.8667 233.173 39.4933 234.4 41.6C235.627 43.68 236.24 46.1467 236.24 49C236.24 51.8533 235.627 54.3333 234.4 56.44C233.173 58.52 231.453 60.1333 229.24 61.28C227.053 62.4267 224.493 63 221.56 63ZM245.113 49C245.113 50.7867 245.486 52.3733 246.233 53.76C246.979 55.1467 248.006 56.24 249.313 57.04C250.619 57.84 252.139 58.24 253.873 58.24C255.606 58.24 257.126 57.84 258.433 57.04C259.739 56.24 260.753 55.1467 261.473 53.76C262.219 52.3733 262.593 50.7867 262.593 49C262.593 47.2133 262.233 45.6267 261.513 44.24C260.793 42.8533 259.779 41.76 258.473 40.96C257.166 40.16 255.633 39.76 253.873 39.76C252.139 39.76 250.619 40.16 249.313 40.96C248.006 41.76 246.979 42.8533 246.233 44.24C245.486 45.6267 245.113 47.2133 245.113 49ZM239.073 49C239.073 46.8667 239.446 44.92 240.193 43.16C240.939 41.3733 241.979 39.8267 243.313 38.52C244.646 37.2133 246.206 36.2133 247.993 35.52C249.806 34.8 251.766 34.44 253.873 34.44C256.006 34.44 257.966 34.8 259.753 35.52C261.539 36.2133 263.099 37.2133 264.433 38.52C265.793 39.8267 266.833 41.3733 267.553 43.16C268.299 44.92 268.673 46.8667 268.673 49C268.673 51.1067 268.299 53.0667 267.553 54.88C266.833 56.6667 265.806 58.2267 264.473 59.56C263.166 60.8933 261.606 61.9333 259.793 62.68C258.006 63.4 256.033 63.76 253.873 63.76C251.713 63.76 249.726 63.4 247.913 62.68C246.126 61.9333 244.566 60.8933 243.233 59.56C241.899 58.2267 240.873 56.6667 240.153 54.88C239.433 53.0667 239.073 51.1067 239.073 49ZM297.564 52.4L303.564 35H310.284L298.484 64.56L289.684 46.16L280.844 64.56L269.084 35H275.804L281.884 52.4L289.684 33.6L297.564 52.4ZM130.92 92.64L131.6 88.12H145.04L145.72 92.64H130.92ZM138.24 80.08L134.04 89.72L134.16 91L130.48 99H124.04L138.24 69.36L152.44 99H145.96L142.36 91.24L142.44 89.8L138.24 80.08ZM155.478 71H161.318V99H155.478V71ZM164.998 99H159.158V93.8H164.798C166.024 93.8 167.184 93.64 168.278 93.32C169.371 92.9733 170.331 92.44 171.158 91.72C171.984 91 172.624 90.0933 173.078 89C173.558 87.88 173.798 86.5467 173.798 85C173.798 83.4533 173.558 82.1333 173.078 81.04C172.624 79.92 171.984 79 171.158 78.28C170.331 77.56 169.371 77.04 168.278 76.72C167.184 76.3733 166.024 76.2 164.798 76.2H159.158V71H164.998C167.931 71 170.491 71.5733 172.678 72.72C174.891 73.8667 176.611 75.4933 177.838 77.6C179.064 79.68 179.678 82.1467 179.678 85C179.678 87.8533 179.064 90.3333 177.838 92.44C176.611 94.52 174.891 96.1333 172.678 97.28C170.491 98.4267 167.931 99 164.998 99ZM196.103 71H201.983V99H196.103V71ZM211.943 71H218.743L207.143 84.12L219.343 99H212.383L200.303 84.28L211.943 71ZM222.431 71H228.231V99H222.431V71ZM231.467 76.16V71H252.267V76.16H244.707V99H238.987V76.16H231.467Z" fill="white"/>
-                </svg>
-              </div>
-              <Text 
-                size="m" 
-                weight="strong" 
-                color="white"
-                style={{ 
-                  fontFamily: 'inherit',
-                  letterSpacing: '0.02em'
+    <nav 
+      style={{
+        position: 'sticky',
+        top: 0,
+        width: '100%',
+        zIndex: 50,
+        backdropFilter: 'blur(24px) saturate(180%)',
+        WebkitBackdropFilter: 'blur(24px) saturate(180%)', // Safari support
+        backgroundColor: 'rgba(10, 14, 39, 0.75)',
+        borderBottom: '1px solid rgba(255, 107, 107, 0.15)',
+        boxShadow: '0 8px 32px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.05)',
+        padding: '1rem 0',
+        // Glass morphism effect
+        background: 'linear-gradient(135deg, rgba(10, 14, 39, 0.8) 0%, rgba(15, 23, 42, 0.7) 100%)',
+        border: '1px solid rgba(255, 255, 255, 0.08)'
+      }}
+      className={className}
+    >
+      <div style={{
+        maxWidth: '1200px',
+        margin: '0 auto',
+        padding: '0 2rem',
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        width: '100%'
+      }}>
+        {/* Logo Section */}
+        <div 
+          style={{ 
+            display: 'flex', 
+            alignItems: 'center', 
+            gap: '1rem', 
+            cursor: 'pointer' 
+          }} 
+          onClick={() => router.push('/')}
+        >
+          <div style={{ width: '40px', height: '40px' }}>
+            <svg 
+              width="40" 
+              height="40" 
+              viewBox="0 0 336 133" 
+              fill="none" 
+              xmlns="http://www.w3.org/2000/svg"
+              style={{ width: '100%', height: '100%' }}
+            >
+              <path d="M45.8853 31.74L25.0107 96.7133L24.1825 99.2811L26.818 99.38L80.782 101.38L83.4175 101.474L84.2456 98.9008L105.12 33.9315L105.943 31.369H105.985L105.157 33.9419L103.37 39.5044V101.228L83.777 100.484L83.4541 101.489L80.8186 101.395L44.2919 100.041V104.76L47.1774 104.869L106.256 107.114L109.142 107.223V28.578L106.256 28.4686L47.1774 26.2238L44.2919 26.1144V36.677L45.8753 31.7395L45.8853 31.74ZM82.8333 39.6255L89.776 51.7765L90.9322 51.1203L83.9896 38.9692L82.8333 39.6255ZM81.9635 45.1776L85.9062 52.0787L87.0625 51.4224L83.1198 44.5213L81.9635 45.1776ZM42.2609 71.5629L50.9691 86.8083L52.1254 86.1468L43.4171 70.9015L42.2609 71.5629ZM40.8806 76.2088L46.0942 85.3285L47.2505 84.6723L42.0369 75.5525L40.8806 76.2088ZM89.9019 64.7036L67.1099 63.8598L76.235 35.4638L99.027 36.3076L89.9019 64.7036ZM73.1206 35.3489L63.9955 63.7449L41.2089 62.9012L50.3339 34.5052L73.1206 35.3489ZM40.2353 65.9369L63.0219 66.7807L53.8969 95.1713L31.1102 94.3276L40.2353 65.9369ZM57.0113 95.2863L66.1363 66.8956L88.9283 67.7393L79.8033 96.13L57.0113 95.2863Z" fill="#FF6B6B"/>
+              <path d="M152.72 52.4L158.72 35H165.44L153.64 64.56L144.84 46.16L136 64.56L124.24 35H130.96L137.04 52.4L144.84 33.6L152.72 52.4ZM168.681 35H174.481V63H168.681V35ZM200.437 35H205.957V64.4L186.037 45.64V63H180.517V33.6L200.437 52.36V35ZM212.04 35H217.88V63H212.04V35ZM221.56 63H215.72V57.8H221.36C222.587 57.8 223.747 57.64 224.84 57.32C225.933 56.9733 226.893 56.44 227.72 55.72C228.547 55 229.187 54.0933 229.64 53C230.12 51.88 230.36 50.5467 230.36 49C230.36 47.4533 230.12 46.1333 229.64 45.04C229.187 43.92 228.547 43 227.72 42.28C226.893 41.56 225.933 41.04 224.84 40.72C223.747 40.3733 222.587 40.2 221.36 40.2H215.72V35H221.56C224.493 35 227.053 35.5733 229.24 36.72C231.453 37.8667 233.173 39.4933 234.4 41.6C235.627 43.68 236.24 46.1467 236.24 49C236.24 51.8533 235.627 54.3333 234.4 56.44C233.173 58.52 231.453 60.1333 229.24 61.28C227.053 62.4267 224.493 63 221.56 63ZM245.113 49C245.113 50.7867 245.486 52.3733 246.233 53.76C246.979 55.1467 248.006 56.24 249.313 57.04C250.619 57.84 252.139 58.24 253.873 58.24C255.606 58.24 257.126 57.84 258.433 57.04C259.739 56.24 260.753 55.1467 261.473 53.76C262.219 52.3733 262.593 50.7867 262.593 49C262.593 47.2133 262.233 45.6267 261.513 44.24C260.793 42.8533 259.779 41.76 258.473 40.96C257.166 40.16 255.633 39.76 253.873 39.76C252.139 39.76 250.619 40.16 249.313 40.96C248.006 41.76 246.979 42.8533 246.233 44.24C245.486 45.6267 245.113 47.2133 245.113 49ZM239.073 49C239.073 46.8667 239.446 44.92 240.193 43.16C240.939 41.3733 241.979 39.8267 243.313 38.52C244.646 37.2133 246.206 36.2133 247.993 35.52C249.806 34.8 251.766 34.44 253.873 34.44C256.006 34.44 257.966 34.8 259.753 35.52C261.539 36.2133 263.099 37.2133 264.433 38.52C265.793 39.8267 266.833 41.3733 267.553 43.16C268.299 44.92 268.673 46.8667 268.673 49C268.673 51.1067 268.299 53.0667 267.553 54.88C266.833 56.6667 265.806 58.2267 264.473 59.56C263.166 60.8933 261.606 61.9333 259.793 62.68C258.006 63.4 256.033 63.76 253.873 63.76C251.713 63.76 249.726 63.4 247.913 62.68C246.126 61.9333 244.566 60.8933 243.233 59.56C241.899 58.2267 240.873 56.6667 240.153 54.88C239.433 53.0667 239.073 51.1067 239.073 49ZM297.564 52.4L303.564 35H310.284L298.484 64.56L289.684 46.16L280.844 64.56L269.084 35H275.804L281.884 52.4L289.684 33.6L297.564 52.4ZM130.92 92.64L131.6 88.12H145.04L145.72 92.64H130.92ZM138.24 80.08L134.04 89.72L134.16 91L130.48 99H124.04L138.24 69.36L152.44 99H145.96L142.36 91.24L142.44 89.8L138.24 80.08ZM155.478 71H161.318V99H155.478V71ZM164.998 99H159.158V93.8H164.798C166.024 93.8 167.184 93.64 168.278 93.32C169.371 92.9733 170.331 92.44 171.158 91.72C171.984 91 172.624 90.0933 173.078 89C173.558 87.88 173.798 86.5467 173.798 85C173.798 83.4533 173.558 82.1333 173.078 81.04C172.624 79.92 171.984 79 171.158 78.28C170.331 77.56 169.371 77.04 168.278 76.72C167.184 76.3733 166.024 76.2 164.798 76.2H159.158V71H164.998C167.931 71 170.491 71.5733 172.678 72.72C174.891 73.8667 176.611 75.4933 177.838 77.6C179.064 79.68 179.678 82.1467 179.678 85C179.678 87.8533 179.064 90.3333 177.838 92.44C176.611 94.52 174.891 96.1333 172.678 97.28C170.491 98.4267 167.931 99 164.998 99ZM196.103 71H201.983V99H196.103V71ZM211.943 71H218.743L207.143 84.12L219.343 99H212.383L200.303 84.28L211.943 71ZM222.431 71H228.231V99H222.431V71ZM231.467 76.16V71H252.267V76.16H244.707V99H238.987V76.16H231.467Z" fill="white"/>
+            </svg>
+          </div>
+          <span style={{ 
+            fontSize: '1rem',
+            fontWeight: 700,
+            color: 'white',
+            letterSpacing: '0.02em'
+          }}>
+            WINDOW AD KIT
+          </span>
+        </div>
+
+        {/* Center Navigation Items (if any) */}
+        {items.length > 0 && (
+          <div style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}>
+            {items.map((item) => (
+              <a 
+                key={item.href}
+                href={item.href}
+                style={{
+                  textDecoration: 'none',
+                  padding: '0.5rem 1rem',
+                  borderRadius: '0.5rem',
+                  transition: 'all 0.2s ease',
+                  border: item.isActive ? '1px solid rgba(255, 107, 107, 0.4)' : '1px solid transparent',
+                  background: item.isActive ? 'rgba(255, 107, 107, 0.1)' : 'transparent',
+                  color: item.isActive ? '#ff6b6b' : '#a0a9c0',
+                  fontSize: '0.875rem',
+                  fontWeight: 500
+                }}
+                onMouseEnter={(e) => {
+                  if (!item.isActive) {
+                    e.currentTarget.style.background = 'rgba(255, 255, 255, 0.05)'
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (!item.isActive) {
+                    e.currentTarget.style.background = 'transparent'
+                  }
                 }}
               >
-                WINDOW AD KIT
-              </Text>
-            </Flex>
+                {item.label}
+              </a>
+            ))}
+          </div>
+        )}
 
-            {/* Center Navigation Items (if any) */}
-            {items.length > 0 && (
-              <Flex gap="l" alignItems="center">
-                {items.map((item) => (
-                  <Text 
-                    key={item.href}
-                    size="s" 
-                    weight="medium" 
-                    color={item.isActive ? "brand-strong" : "neutral-medium"}
-                    href={item.href} 
-                    as="a"
-                    style={{
-                      textDecoration: 'none',
-                      padding: '0.5rem 1rem',
-                      borderRadius: '0.5rem',
-                      transition: 'all 0.2s ease',
-                      border: item.isActive ? '1px solid var(--brand-alpha-medium)' : '1px solid transparent',
-                      background: item.isActive ? 'var(--brand-alpha-weak)' : 'transparent'
-                    }}
-                    onMouseEnter={(e) => {
-                      if (!item.isActive) {
-                        e.currentTarget.style.background = 'var(--neutral-alpha-weak)'
-                      }
-                    }}
-                    onMouseLeave={(e) => {
-                      if (!item.isActive) {
-                        e.currentTarget.style.background = 'transparent'
-                      }
-                    }}
-                  >
-                    {item.label}
-                  </Text>
-                ))}
-              </Flex>
-            )}
+        {/* Right Side - Login & CTA */}
+        <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+          {/* Login Link */}
+          {showLogin && (
+            <a 
+              href="/login"
+              style={{
+                textDecoration: 'none',
+                padding: '0.5rem 1rem',
+                borderRadius: '0.5rem',
+                transition: 'all 0.2s ease',
+                border: '1px solid rgba(255, 255, 255, 0.1)',
+                color: '#a0a9c0',
+                fontSize: '0.875rem',
+                fontWeight: 500
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = 'rgba(255, 255, 255, 0.05)'
+                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.2)'
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = 'transparent'
+                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.1)'
+              }}
+            >
+              Login
+            </a>
+          )}
 
-            {/* Right Side - Login & CTA */}
-            <Flex gap="m" alignItems="center">
-              {/* Login Link */}
-              {showLogin && (
-                <Text 
-                  size="s" 
-                  weight="medium" 
-                  color="neutral-medium"
-                  href="/login" 
-                  as="a"
-                  style={{
-                    textDecoration: 'none',
-                    padding: '0.5rem 1rem',
-                    borderRadius: '0.5rem',
-                    transition: 'all 0.2s ease',
-                    border: '1px solid rgba(255, 255, 255, 0.1)'
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.background = 'rgba(255, 255, 255, 0.05)'
-                    e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.2)'
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.background = 'transparent'
-                    e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.1)'
-                  }}
-                >
-                  Login
-                </Text>
-              )}
-
-              {/* Glowing CTA Button */}
-              {showCTA && (
-                <Button
-                  variant="primary"
-                  size="m"
-                  onClick={() => {
-                    // Scroll to order section if on same page, or navigate to get-started
-                    const orderSection = document.getElementById('order')
-                    if (orderSection) {
-                      orderSection.scrollIntoView({ behavior: 'smooth' })
-                    } else {
-                      router.push('/get-started#order')
-                    }
-                  }}
-                  style={{
-                    background: 'linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%)',
-                    border: 'none',
-                    borderRadius: '25px',
-                    padding: '0.75rem 1.5rem',
-                    fontSize: '0.875rem',
-                    fontWeight: 600,
-                    color: 'white',
-                    cursor: 'pointer',
-                    transition: 'all 0.3s ease',
-                    boxShadow: '0 0 20px rgba(255, 107, 107, 0.4)',
-                    animation: 'glow 2s ease-in-out infinite alternate'
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = 'translateY(-2px)'
-                    e.currentTarget.style.boxShadow = '0 8px 30px rgba(255, 107, 107, 0.6)'
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = 'translateY(0)'
-                    e.currentTarget.style.boxShadow = '0 0 20px rgba(255, 107, 107, 0.4)'
-                  }}
-                >
-                  {ctaText}
-                </Button>
-              )}
-            </Flex>
-          </Flex>
-        </Column>
-      </Flex>
-
-      {/* CSS for glowing animation */}
-      <style jsx>{`
-        @keyframes glow {
-          from {
-            box-shadow: 0 0 20px rgba(255, 107, 107, 0.4);
-          }
-          to {
-            box-shadow: 0 0 30px rgba(255, 107, 107, 0.6), 0 0 40px rgba(255, 107, 107, 0.3);
-          }
-        }
-      `}</style>
-    </>
+          {/* Glowing CTA Button */}
+          {showCTA && (
+            <button
+              onClick={() => {
+                const orderSection = document.getElementById('order')
+                if (orderSection) {
+                  orderSection.scrollIntoView({ behavior: 'smooth' })
+                } else {
+                  router.push('/get-started#order')
+                }
+              }}
+              style={{
+                background: 'linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%)',
+                border: 'none',
+                borderRadius: '25px',
+                padding: '0.75rem 1.5rem',
+                fontSize: '0.875rem',
+                fontWeight: 600,
+                color: 'white',
+                cursor: 'pointer',
+                transition: 'all 0.3s ease',
+                boxShadow: '0 0 20px rgba(255, 107, 107, 0.4)'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-2px)'
+                e.currentTarget.style.boxShadow = '0 8px 30px rgba(255, 107, 107, 0.6)'
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)'
+                e.currentTarget.style.boxShadow = '0 0 20px rgba(255, 107, 107, 0.4)'
+              }}
+            >
+              {ctaText}
+            </button>
+          )}
+        </div>
+      </div>
+    </nav>
   )
 }
 
